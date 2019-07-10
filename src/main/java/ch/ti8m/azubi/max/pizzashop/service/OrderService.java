@@ -1,4 +1,4 @@
 package ch.ti8m.azubi.max.pizzashop.service;
 
-public class OrderService {
+public interface OrderService {
 }

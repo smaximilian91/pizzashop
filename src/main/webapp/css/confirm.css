@@ -1,0 +1,47 @@
+@import url('https://fonts.googleapis.com/css?family=Lato:300,400,700,900');
+
+.header {
+  background-color: black;
+  text-align: center;
+  height: 80px;
+  padding-top: 20px;
+}
+a {
+  color: white;
+  font-size: 30px;
+}
+html, body {
+  height: 100%;
+}
+body {
+  display: flex;
+  flex-direction: column;
+  margin: 0px;
+  font-family: cursive;
+  background-image: url(Pictures/Pizzeria.jpg);
+  background-size: cover;
+}
+.bestellung {
+  background-color: black;
+  color: white;
+  opacity: 0.6;
+  text-align: left;
+  width: 40%;
+  align-self: center;
+  padding-bottom: 1.8%;
+  margin-top: 5%;
+}
+form {
+  font-size: 25px;
+}
+select {
+  font-size: 20px;
+}
+.pizzen {
+  font-size: 180%;
+  margin: 20%;
+}
+
+h1 {
+text-align: center
+}
