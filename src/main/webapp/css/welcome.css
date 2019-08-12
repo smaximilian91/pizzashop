@@ -1,57 +1,45 @@
 @import url('https://fonts.googleapis.com/css?family=Lato:300,400,700,900');
 
-* {
-    font-family: Lato, Calibri, sans-serif;
-    color: #444455;
+html, body {
+  height: 100%;
 }
-
 body {
-    padding: 20px;
+  background-image: url(Pictures/GoodMarrgharita.jpg);
+  background-size: cover;
+  font-family: cursive;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  margin: 0px;
 }
-
-h1, h2, h3, h4 {
-    font-weight: 900;
+.header {
+  background-color: black;
+  text-align: center;
+  height: 80px;
+  padding-top: 20px;
 }
-
+article{
+  background-color: black;
+  opacity: 0.6;
+  width: 50%;
+  margin-top: 10%;
+  margin-left: 10%;
+  margin-right: 10%;
+  color: white;
+  text-align: center;
+}
+p {
+  font-size: 20px;
+}
 h1 {
-    margin-top: 0;
+  font-size: 30px;
+}
+a {
+  color: white;
+  font-size: 30px;
+}
+.content {
+  display: flex;
+  flex-direction: row;
 }
 
-h4 {
-    margin-bottom: 0;
-}
-
-b {
-    font-weight: 900;
-}
-
-table {
-    border-collapse: collapse;
-    width: 75%;
-}
-
-th, td {
-    text-align: left;
-    padding: 5px 10px;
-}
-
-th {
-    font-weight: bold;
-    border-bottom: 1px solid #999999;
-}
-
-div.note {
-    background: #FBE96C;
-    box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.2);
-    padding: 15px;
-    margin: 10px;
-    float: left;
-    width: 200px;
-    min-height: 200px;
-}
-
-div.container:after {
-    content: '';
-    display: block;
-    clear: both;
-}

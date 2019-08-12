@@ -1,4 +1,4 @@
-package org.test.webapp.project.webservice.config.exception;
+package ch.ti8m.azubi.max.pizzashop.ws.config.exception;
 
 import javax.ws.rs.core.Response;
 import javax.ws.rs.ext.ExceptionMapper;

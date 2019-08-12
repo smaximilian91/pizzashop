@@ -1,57 +1,37 @@
 @import url('https://fonts.googleapis.com/css?family=Lato:300,400,700,900');
 
-* {
-    font-family: Lato, Calibri, sans-serif;
-    color: #444455;
+.header {
+  background-color: black;
+  text-align: center;
+  height: 80px;
+  padding-top: 20px;
 }
-
+a {
+  color: white;
+  font-size: 30px;
+}
+html, body {
+  height: 100%;
+}
 body {
-    padding: 20px;
-}
-
-h1, h2, h3, h4 {
-    font-weight: 900;
-}
-
-h1 {
-    margin-top: 0;
-}
-
-h4 {
-    margin-bottom: 0;
-}
-
-b {
-    font-weight: 900;
+  font-family: cursive;
+  margin: 0px;
+  background-image: url(Pictures/pizzaofen.jpg);
+  background-size: cover;
 }
 
 table {
-    border-collapse: collapse;
-    width: 75%;
+  margin-top: 10%;
+  margin-left: 25%;
+  width: 50%;
+  height: 45%;
+  font-size: 20px;
+  text-align: center;
+  font-style: italic;
 }
-
-th, td {
-    text-align: left;
-    padding: 5px 10px;
-}
-
 th {
-    font-weight: bold;
-    border-bottom: 1px solid #999999;
+  background-color: grey;
 }
-
-div.note {
-    background: #FBE96C;
-    box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.2);
-    padding: 15px;
-    margin: 10px;
-    float: left;
-    width: 200px;
-    min-height: 200px;
-}
-
-div.container:after {
-    content: '';
-    display: block;
-    clear: both;
+td {
+  background-color: lightblue;
 }

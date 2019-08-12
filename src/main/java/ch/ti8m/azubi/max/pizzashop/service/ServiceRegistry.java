@@ -1,6 +1,4 @@
-package org.test.webapp.project.service;
-
-import org.test.webapp.project.api.NotesService;
+package ch.ti8m.azubi.max.pizzashop.service;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -19,7 +17,8 @@ public class ServiceRegistry {
     private final Map<Class<?>, Object> services = new HashMap<>();
 
     private ServiceRegistry() {
-        services.put(NotesService.class, new NotesServiceImpl());
+        services.put(PizzaService.class, new PizzaServiceImpl());
+        services.put(OrderService.class, new OrderServiceImpl());
     }
 
     public static synchronized ServiceRegistry getInstance() {

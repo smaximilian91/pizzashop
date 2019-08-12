@@ -1,4 +1,4 @@
-package org.test.webapp.project.template;
+package ch.ti8m.azubi.max.pizzashop.template;
 
 import freemarker.template.Configuration;
 import freemarker.template.Template;

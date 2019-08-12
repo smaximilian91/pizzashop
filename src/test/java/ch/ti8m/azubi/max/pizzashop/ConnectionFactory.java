@@ -1,4 +1,4 @@
-package ch.ti8m.azubi.max.pizzashop.dto;
+package ch.ti8m.azubi.max.pizzashop;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
