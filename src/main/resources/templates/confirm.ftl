@@ -20,8 +20,8 @@
          <th> Preis </th>
        </tr>
        <script>
+           let i = 0;
        </script>
-
       <#list pizzaOrders as pizzaOrder>
       <script>
       i += ${pizzaOrder.amount};
@@ -35,7 +35,7 @@
 
       <tr>
          <td> Total </td>
-         <td id = "i"> <script> document.getElementById("i").innerHTML = i; </script> </td>
+         <td id = "i"> <script> document.getElementById("i").innerHTML = i.toString(); </script> </td>
          <td><span> ${order.total} CHF </span> </td>
       </tr>
       </table>

@@ -1,18 +1,19 @@
-@import url('https://fonts.googleapis.com/css?family=Lato:300,400,700,900');
+html, body {
+  height: 100%;
+}
 
 .header {
   background-color: black;
   text-align: center;
-  height: 80px;
-  padding-top: 20px;
+  padding-bottom: 1.6%;
+  padding-top: 1.6%;
 }
+
 a {
   color: white;
-  font-size: 30px;
+  font-size: 200%;
 }
-html, body {
-  height: 100%;
-}
+
 body {
   display: flex;
   flex-direction: column;
@@ -21,34 +22,33 @@ body {
   background-image: url(Pictures/Pizzeria.jpg);
   background-size: cover;
 }
+
 .bestellung {
   background-color: black;
   color: white;
+  margin-top: 5.5%;
   opacity: 0.6;
-  text-align: left;
   width: 30%;
-  height: 75%;
   align-self: center;
-}
-
-form {
-  font-size: 100%;
-}
-select {
-  font-size: 110%;
-}
-.pizzen {
-  font-size: 180%;
-  margin: 20%;
-}
-
-label {
-text-align: center;
+  font-size: 150%;
+  padding-top: 1%;
+  padding-bottom: 2%;
 }
 
 .text {
- font-size: 200%;
- text-align: center
+  font-size: 145%;
+  padding-bottom: 1%;
+  text-align: center;
+}
+
+.pizzen {
+  margin-top: 5%;
+  margin-bottom: 5%;
+  margin-left: 20%;
+}
+
+select {
+  font-size: 100%;
 }
 
 .formular {
@@ -56,8 +56,5 @@ text-align: center;
 }
 
 span {
-    font-size: 75%;
-}
-p {
-    color: white;
+  font-size: 85%;
 }

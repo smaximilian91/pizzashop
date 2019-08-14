@@ -99,8 +99,8 @@ public class OrderServlet extends HttpServlet {
                 if (anyAmountIsNotNull) {
                     logger.info("Creating Order in Database");
                     Order order = new Order(address, phone, pizzaOrderList);
-                    orderService.create(order);
                     logger.info(order.toString());
+                    orderService.create(order);
                     HttpSession session = req.getSession();
                     session.setAttribute("order", order);
                     resp.sendRedirect("confirm");

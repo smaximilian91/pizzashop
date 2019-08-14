@@ -11,7 +11,7 @@
       <a>|</a>
       <a href = "pizza">Karte</a>
       <a>|</a>
-      <a href = "order">Bestellung</a>
+      <a href = "http://localhost:3000">Bestellung</a>
     </div>
 
 <table>
