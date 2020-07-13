@@ -11,9 +11,6 @@ import java.io.InputStream;
 @WebServlet("/welcome")
 public class WelcomeServlet extends HttpServlet {
 
-    /**
-     * Get the Pizza HTML page, with a list of notes and a form to submit new notes.
-     */
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException {
 

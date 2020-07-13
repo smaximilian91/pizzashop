@@ -31,7 +31,7 @@ public class PizzaServlet extends HttpServlet {
     }
 
     /**
-     * Get the Pizza HTML page, with a list of notes and a form to submit new notes.
+     * Get the Pizza HTML page with a list of all pizzas.
      */
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException {
