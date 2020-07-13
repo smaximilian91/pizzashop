@@ -4,7 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.sql.Date;
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 import java.util.List;
 
 public class Order {
@@ -22,15 +22,6 @@ public class Order {
     @JsonProperty("pizzaOrders")
     public List<PizzaOrder> pizzaOrders;
 
-    public Order(Integer id, String address, String phone, List<PizzaOrder> pizzaOrders) {
-        this.id = id;
-        this.address = address;
-        this.phone = phone;
-        this.date = getLocalDate();
-        this.pizzaOrders = pizzaOrders;
-        calculateTotalPrice();
-    }
-
     public Order(Integer id, String address, String phone, Date date, List<PizzaOrder> pizzaOrders) {
         this.id = id;
         this.address = address;
@@ -45,14 +36,6 @@ public class Order {
         this.phone = phone;
         this.date = getLocalDate();
         this.pizzaOrders = pizzaOrders;
-        calculateTotalPrice();
-    }
-
-    public Order(Integer pizzaID, String pizzaName, List<PizzaOrder> pizzaOrders) {
-        this.id = pizzaID;
-        this.address = pizzaName;
-        this.pizzaOrders = pizzaOrders;
-        this.date = getLocalDate();
         calculateTotalPrice();
     }
 
@@ -113,15 +96,11 @@ public class Order {
     }
 
     public void calculateTotalPrice() {
-        double totalPrice = 0;
-        for (int i = 0; i < pizzaOrders.size(); i++) {
-            totalPrice += pizzaOrders.get(i).getAmount() * pizzaOrders.get(i).getPizza().getPrice();
-        }
-        this.total = totalPrice;
+        this.total = pizzaOrders.stream().mapToDouble(pizzaOrder -> pizzaOrder.getAmount() * pizzaOrder.getPizza().getPrice()).sum();
     }
 
     @JsonIgnore
     public Date getLocalDate() {
-        return Date.valueOf(LocalDateTime.now().toLocalDate().toString());
+        return Date.valueOf(LocalDate.now());
     }
 }
