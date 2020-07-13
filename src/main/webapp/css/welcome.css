@@ -1,39 +1,51 @@
-html, body {
-  height: 100%;
-}
-body {
-  background-image: url(Pictures/GoodMarrgharita.jpg);
-  background-size: cover;
-  font-family: cursive;
-  flex-direction: column;
-  margin: 0px;
-}
-.header {
-  background-color: black;
-  text-align: center;
-  padding-bottom: 1.6%;
-  padding-top: 1.6%;
-}
-article{
-  background-color: black;
-  opacity: 0.6;
-  margin-top: 10%;
-  margin-left: 10%;
-  margin-right: 10%;
-  color: white;
-  text-align: center;
-}
-p {
-  font-size: 20px;
-}
-h1 {
-  font-size: 30px;
-}
-a {
-  color: white;
-  font-size: 200%;
-}
-.content {
-  display: flex;
+* {
+    margin: 0;
+    font-family: cursive;
 }
 
+body {
+    background-image: url(Pictures/GoodMarrgharita.jpg);
+}
+
+.header {
+    background-color: black;
+    text-align: center;
+    padding: 30px;
+}
+
+
+.content {
+    font-size: 20px;
+    margin-top: 250px;
+    justify-content: center;
+    display: flex;
+}
+
+.textOne, .textTwo {
+    background-color: black;
+    opacity: 0.6;
+    color: white;
+    padding: 30px;
+    text-align: center;
+}
+
+.textOne {
+    margin-right: 50px;
+
+}
+
+.textTwo {
+    margin-left: 50px;
+}
+
+.title {
+    padding-bottom: 15px;
+    font-size: 30px;
+}
+
+a {
+    text-decoration: none;
+    padding: 15px;
+    color: white;
+    font-size: 200%;
+}
