@@ -59,15 +59,14 @@ public class OrderDAOTest {
     // Order updaten der nicht existiert, gibt Exception zurück
     public void updateOrderThatDoesntExist() throws Exception {
         PizzaOrder pizzaOrder = new PizzaOrder(3, pizzaDAO.getPizzaByID(3));
-        orderDAO.updateOrder(new Order(20, "New Adress", Arrays.asList(pizzaOrder)));
-
+        orderDAO.updateOrder(new Order(20, "New Adress", "+000 000 000", getDate(), Arrays.asList(pizzaOrder)));
     }
 
     @Test
     // Order updaten der existiert, muss gleich sein
     public void updateOrderThatExists() throws Exception {
         PizzaOrder pizzaOrder1 = new PizzaOrder(4, pizzaDAO.getPizzaByID(2));
-        orderDAO.updateOrder(new Order(1, "updated Order", "+33 333 33 33", Arrays.asList(pizzaOrder1)));
+        orderDAO.updateOrder(new Order(1, "updated Order", "+33 333 33 33", getDate(), Arrays.asList(pizzaOrder1)));
         Assert.assertEquals("OrderID: #1 Adress: \"updated Order\" , Phone: +33 333 33 33, " + getDate().toString() + ", Order: [Pizza: Caprese Amount: 4] Total Price: 74.0", orderDAO.getOrderByID(1).toString());
     }
 
@@ -75,20 +74,8 @@ public class OrderDAOTest {
     // Order der nicht existiert saven (create) und Order saven der existiert (update), muss gleich sein
     public void saveOrder() throws Exception {
         orderDAO.saveOrder(new Order("createdOrder", "+33 333 33 33", Arrays.asList(new PizzaOrder(3, pizzaDAO.getPizzaByID(1)))));
-        orderDAO.saveOrder(new Order(4, "updatedOrder", "+33 333 33 33", Arrays.asList(new PizzaOrder(3, pizzaDAO.getPizzaByID(1)))));
+        orderDAO.saveOrder(new Order(4, "updatedOrder", "+33 333 33 33", getDate(), Arrays.asList(new PizzaOrder(3, pizzaDAO.getPizzaByID(1)))));
         Assert.assertEquals("OrderID: #4 Adress: \"updatedOrder\" , Phone: +33 333 33 33, " + getDate().toString() + ", Order: [Pizza: Margherita Amount: 3] Total Price: 49.5", orderDAO.getOrderByID(4).toString());
-    }
-
-    @Test
-    // Order finden der nicht existiert, gibt null zurück
-    public void findOrderThatDoesntExist() throws Exception {
-        Assert.assertNull(orderDAO.findOrder(100));
-    }
-
-    @Test
-    // Order finden der existiert, gibt nicht null zurück
-    public void findOrderThatExists() throws Exception {
-        Assert.assertNotNull((orderDAO.findOrder(1)));
     }
 
     @Test(expected = IllegalArgumentException.class)
@@ -119,7 +106,7 @@ public class OrderDAOTest {
     @Test(expected = IllegalArgumentException.class)
     // Nicht existierender Order übergeben, muss Exception zurückgeben
     public void doesNonExistentOrderExist() throws Exception {
-        orderDAO.doesOrderExist(new Order(100, "hello", Arrays.asList(new PizzaOrder(3, pizzaDAO.getPizzaByID(1)))));
+        orderDAO.doesOrderExist(new Order(100, "hello", "+000 000 000", getDate(), Arrays.asList(new PizzaOrder(3, pizzaDAO.getPizzaByID(1)))));
     }
 
     @Test
@@ -155,7 +142,7 @@ public class OrderDAOTest {
                 " id int not null auto_increment,\n" +
                 " address VARCHAR(255) not null,\n" +
                 " phone VARCHAR(255) not null,\n" +
-                " date datetime default current_timestamp not null,\n" +
+                " date datetime default null,\n" +
                 " totalPrice double not null,\n" +
                 " primary key (id))");
         PreparedStatement preparedStatement3 = connection.prepareStatement(sql);

@@ -70,18 +70,6 @@ public class PizzaDAOTest {
         Assert.assertEquals("#8: updated new Pizza, costs 17.5", pizzaDAO.getPizzaByID(8).toString());
     }
 
-    @Test
-    // Pizza finden die nicht existiert, gibt null zurück
-    public void findPizzaThatDoesntExist() throws Exception {
-        Assert.assertNull(pizzaDAO.findPizza(100));
-    }
-
-    @Test
-    // Pizza finden die existiert, gibt nicht null zurück
-    public void findPizzaThatExists() throws Exception {
-        Assert.assertNotNull(pizzaDAO.findPizza(1));
-    }
-
     @Test(expected = IllegalArgumentException.class)
     // Nicht existierende Pizza übergeben, muss Exception zurückgeben
     public void deleteNonExistentPizza() throws Exception {
@@ -145,7 +133,7 @@ public class PizzaDAOTest {
                 " id int not null auto_increment,\n" +
                 " address VARCHAR(255) not null,\n" +
                 " phone VARCHAR(255) not null,\n" +
-                " date datetime default current_timestamp not null,\n" +
+                " date datetime default null,\n" +
                 " totalPrice double not null,\n" +
                 " primary key (id))");
         PreparedStatement preparedStatement3 = connection.prepareStatement(sql);
