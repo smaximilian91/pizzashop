@@ -90,19 +90,6 @@ public class PizzaDAO {
     }
 
     /**
-     * Find a Pizza
-     */
-    public Pizza findPizza(int id) throws Exception {
-
-        PreparedStatement preparedStatement = connection.prepareStatement("select * from pizza where id =" + id);
-        ResultSet resultSet = preparedStatement.executeQuery();
-        if (resultSet.next()) {
-            return getPizzaByID(id);
-        }
-        return null;
-    }
-
-    /**
      * Delete a Pizza by ID
      */
     public boolean deletePizzaByID(int id) throws Exception {

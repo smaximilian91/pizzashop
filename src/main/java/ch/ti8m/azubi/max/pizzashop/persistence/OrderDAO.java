@@ -3,8 +3,10 @@ package ch.ti8m.azubi.max.pizzashop.persistence;
 import ch.ti8m.azubi.max.pizzashop.dto.Order;
 import ch.ti8m.azubi.max.pizzashop.dto.PizzaOrder;
 
-import java.sql.*;
-import java.time.LocalDateTime;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -28,7 +30,7 @@ public class OrderDAO {
         PreparedStatement preparedStatement = connection.prepareStatement("select * from order2");
         ResultSet resultSet = preparedStatement.executeQuery();
         while (resultSet.next()) {
-            orderList.add(new Order(resultSet.getInt("id"), resultSet.getString("address"), resultSet.getString("phone"), getPizzaOrders(resultSet.getInt("id"))));
+            orderList.add(new Order(resultSet.getInt("id"), resultSet.getString("address"), resultSet.getString("phone"), resultSet.getDate("date"), getPizzaOrders(resultSet.getInt("id"))));
         }
         return orderList;
     }
@@ -38,7 +40,7 @@ public class OrderDAO {
         PreparedStatement preparedStatement = connection.prepareStatement("select * from order2 where id =" + id);
         ResultSet resultSet = preparedStatement.executeQuery();
         if (resultSet.next()) {
-            return new Order(resultSet.getInt("id"), resultSet.getString("address"), resultSet.getString("phone"), getPizzaOrders(resultSet.getInt("id")));
+            return new Order(resultSet.getInt("id"), resultSet.getString("address"), resultSet.getString("phone"), resultSet.getDate("date"), getPizzaOrders(resultSet.getInt("id")));
         }
         return null;
     }
@@ -53,7 +55,7 @@ public class OrderDAO {
         preparedStatement.setString(1, order.getAddress());
         preparedStatement.setString(2, order.getPhone());
         preparedStatement.setDouble(3, order.getTotal());
-        preparedStatement.setDate(4, getDate());
+        preparedStatement.setDate(4, order.getDate());
         preparedStatement.execute();
         ResultSet resultSet = preparedStatement.getGeneratedKeys();
         resultSet.next();
@@ -108,19 +110,6 @@ public class OrderDAO {
     }
 
     /**
-     * Find an Order
-     */
-    public Order findOrder(int id) throws Exception {
-
-        PreparedStatement statement = connection.prepareStatement("select * from order2 where id = " + id);
-        ResultSet resultSet = statement.executeQuery();
-        if (resultSet.next()) {
-            return getOrderByID(id);
-        }
-        return null;
-    }
-
-    /**
      * Delete an Order by ID
      */
     public boolean deleteOrderByID(int id) throws Exception {
@@ -166,6 +155,9 @@ public class OrderDAO {
         return true;
     }
 
+    /**
+     * Returns all pizzaOrder of an order by its id
+     */
     public List<PizzaOrder> getPizzaOrders(int id) throws Exception {
 
         PreparedStatement preparedStatement = connection.prepareStatement("select * from pizza_order where orderIDFS =" + id);
@@ -175,9 +167,5 @@ public class OrderDAO {
             pizzaOrderList.add(new PizzaOrder(resultSet.getInt("amount"), pizzaDAO.getPizzaByID(resultSet.getInt("pizzaIDFS"))));
         }
         return pizzaOrderList;
-    }
-
-    public Date getDate() {
-        return Date.valueOf(LocalDateTime.now().toLocalDate().toString());
     }
 }
