@@ -6,6 +6,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import java.sql.Date;
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Objects;
 
 public class Order {
 
@@ -102,5 +103,23 @@ public class Order {
     @JsonIgnore
     public Date getLocalDate() {
         return Date.valueOf(LocalDate.now());
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Order order = (Order) o;
+        return Objects.equals(id, order.id) &&
+                Objects.equals(address, order.address) &&
+                Objects.equals(phone, order.phone) &&
+                Objects.equals(date, order.date) &&
+                Objects.equals(total, order.total) &&
+                Objects.equals(pizzaOrders, order.pizzaOrders);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, address, phone, date, total, pizzaOrders);
     }
 }
