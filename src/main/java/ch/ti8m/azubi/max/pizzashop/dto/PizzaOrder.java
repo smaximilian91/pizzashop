@@ -12,7 +12,9 @@ public class PizzaOrder {
         this.pizza = pizza;
     }
 
-    public PizzaOrder() {}
+    public PizzaOrder() {
+    }
+
     public int getAmount() {
         return amount;
     }
