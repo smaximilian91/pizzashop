@@ -31,6 +31,15 @@ public class Order {
         calculateTotalPrice();
     }
 
+    public Order(Integer id, String address, String phone, Date date, List<PizzaOrder> pizzaOrders) {
+        this.id = id;
+        this.address = address;
+        this.phone = phone;
+        this.date = date;
+        this.pizzaOrders = pizzaOrders;
+        calculateTotalPrice();
+    }
+
     public Order(String address, String phone, List<PizzaOrder> pizzaOrders) {
         this.address = address;
         this.phone = phone;
