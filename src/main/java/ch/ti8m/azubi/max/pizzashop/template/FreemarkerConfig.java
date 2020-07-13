@@ -9,12 +9,6 @@ import javax.servlet.ServletException;
 import java.io.IOException;
 import java.util.Locale;
 
-/**
- * Freemarker configuration
- *
- * @author pwalser
- * @since 27.06.2018
- */
 public class FreemarkerConfig {
 
     private Configuration config;
