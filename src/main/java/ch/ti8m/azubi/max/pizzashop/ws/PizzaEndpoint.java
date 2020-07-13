@@ -11,18 +11,20 @@ import java.util.List;
 @Path("/pizzas")
 public class PizzaEndpoint {
 
+    private PizzaService pizzaService = ServiceRegistry.getInstance().get(PizzaService.class);
+
     @GET
     @Path("/")
     @Produces(MediaType.APPLICATION_JSON)
     public List<Pizza> listPizzas() throws Exception {
-        return pizzaService().list();
+        return pizzaService.list();
     }
 
     @GET
     @Path("/{id}")
     @Produces(MediaType.APPLICATION_JSON)
     public Pizza getPizza(@PathParam("id") int id) throws Exception {
-        return pizzaService().get(id);
+        return pizzaService.get(id);
     }
 
     @POST
@@ -30,7 +32,7 @@ public class PizzaEndpoint {
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
     public Pizza createPizza(Pizza pizza) throws Exception {
-        return pizzaService().create(pizza);
+        return pizzaService.create(pizza);
     }
 
     @PUT
@@ -38,16 +40,12 @@ public class PizzaEndpoint {
     @Consumes(MediaType.APPLICATION_JSON)
     public void updatePizza(@PathParam("id") int id, Pizza pizza) throws Exception {
         pizza.setId(id);
-        pizzaService().update(pizza);
+        pizzaService.update(pizza);
     }
 
     @DELETE
     @Path("/{id}")
-    public void deleteNote(@PathParam("id") int id) throws Exception {
-        pizzaService().remove(id);
-    }
-
-    private PizzaService pizzaService() {
-        return ServiceRegistry.getInstance().get(PizzaService.class);
+    public void deletePizza(@PathParam("id") int id) throws Exception {
+        pizzaService.remove(id);
     }
 }
