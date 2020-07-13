@@ -3,15 +3,13 @@ package ch.ti8m.azubi.max.pizzashop.service;
 import ch.ti8m.azubi.max.pizzashop.dto.Pizza;
 import ch.ti8m.azubi.max.pizzashop.persistence.PizzaDAO;
 
-import java.sql.Connection;
 import java.util.Comparator;
 import java.util.List;
 import java.util.NoSuchElementException;
 
 public class PizzaServiceImpl implements PizzaService {
 
-    private final Connection dbConnection = ConnectionUtil.createDBConnection();
-    private final PizzaDAO pizzaDAO = new PizzaDAO(dbConnection);
+    private final PizzaDAO pizzaDAO = new PizzaDAO(ConnectionUtil.createDBConnection());
 
     @Override
     public Pizza get(int pizzaID) throws Exception {
@@ -43,6 +41,4 @@ public class PizzaServiceImpl implements PizzaService {
     public void remove(int pizzaID) throws Exception {
         pizzaDAO.deletePizzaByID(pizzaID);
     }
-
-
 }

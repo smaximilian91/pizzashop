@@ -10,9 +10,7 @@ import java.util.NoSuchElementException;
 
 public class OrderServiceImpl implements OrderService {
 
-
-    private final Connection dbConnection = ConnectionUtil.createDBConnection();
-    private final OrderDAO orderDAO = new OrderDAO(dbConnection);
+    private final OrderDAO orderDAO = new OrderDAO(ConnectionUtil.createDBConnection());
 
     @Override
     public Order get(int orderID) throws Exception {

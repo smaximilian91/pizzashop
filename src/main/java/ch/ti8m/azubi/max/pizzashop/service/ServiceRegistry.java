@@ -4,12 +4,6 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.NoSuchElementException;
 
-/**
- * A simple service registry.
- *
- * @author wap
- * @since 28.11.2018
- */
 public class ServiceRegistry {
 
     private static ServiceRegistry instance;
