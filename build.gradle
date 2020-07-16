@@ -4,7 +4,7 @@ buildscript {
     }
 
     dependencies {
-        classpath 'com.bmuschko:gradle-cargo-plugin:2.6.1'
+        classpath 'com.bmuschko:gradle-cargo-plugin:2.7.1'
     }
 }
 
@@ -30,7 +30,7 @@ tasks.withType(JavaCompile) {
 }
 
 war {
-    archiveName 'webapp-project.war'
+    archiveName 'pizzashop.war'
     manifest {
         attributes(
                 "Name": project.name,
@@ -55,35 +55,32 @@ ext.libs = [
                 'ch.qos.logback:logback-classic:1.1.8'
         ],
         json             : [
-                'com.fasterxml.jackson.core:jackson-annotations:2.9.6',
-                'com.fasterxml.jackson.core:jackson-databind:2.9.6',
-                'com.fasterxml.jackson.datatype:jackson-datatype-jsr310:2.9.6'
-
+                'com.fasterxml.jackson.core:jackson-databind:2.8.5',
+                'com.fasterxml.jackson.datatype:jackson-datatype-jsr310:2.8.5'
+        ],
+        jaxrs            : [
+                'org.glassfish.jersey.containers:jersey-container-servlet:2.25',
+                'org.glassfish.jersey.media:jersey-media-json-jackson:2.25'
         ],
         freemarker       : [
                 'org.freemarker:freemarker:2.3.20'
         ],
         cargo            : [
-                'org.codehaus.cargo:cargo-core-uberjar:1.6.8',
-                'org.codehaus.cargo:cargo-ant:1.6.8'
+                'org.codehaus.cargo:cargo-core-uberjar:1.7.12',
+                'org.codehaus.cargo:cargo-ant:1.7.12'
         ],
         db               : [
                 'mysql:mysql-connector-java:5.1.6'
         ],
         dbTest           : [
                 'com.h2database:h2:1.4.199'
-        ],
-        jaxrs            : [
-                'javax:javaee-api:7.0',
-                'org.glassfish.jersey.containers:jersey-container-servlet:2.25',
-                'org.glassfish.jersey.media:jersey-media-json-jackson:2.25'
         ]
 ]
 
 
 dependencies {
-
     cargo libs.cargo
+
     providedCompile libs.jee
     compile libs.jaxrs
     compile libs.javaCompatibility
@@ -99,14 +96,14 @@ dependencies {
 }
 
 
-def confDir = mkdir(file("container/config"))
+def confDir=mkdir(file("container/config"))
 
 configurations {
     tomcat
 }
 
 dependencies {
-    tomcat "org.apache.tomcat:tomcat:9.0.14@zip"
+    tomcat "org.apache.tomcat:tomcat:9.0.21@zip"
 }
 
 cargo {
@@ -115,7 +112,7 @@ cargo {
     port = Integer.valueOf(project.property('tomcat.port'))
 
     deployable {
-        context = 'test'
+        context = ''
     }
 
     local {
@@ -147,6 +144,9 @@ task run(dependsOn: ['clean', 'assemble', 'cargoRunLocal']) {
     logging.captureStandardOutput LogLevel.INFO
     group = 'Deploy'
     description = 'Build the WAR and deploy it to a local Tomcat installation'
+}
+
+task start(dependsOn: ['run']) {
 }
 
 task stop(dependsOn: ['cargoStopLocal']) {

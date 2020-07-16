@@ -1,0 +1,4 @@
+Manifest-Version: 1.0
+Name: pizzashop
+Version: 1.0.0-SNAPSHOT
+
